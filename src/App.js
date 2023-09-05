@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Navbar from './componentes/Navbar';
 
 function App() {
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
+
+  const categorias = ['Tenis Para Hombre', 'Tenis Para Mujer', 'Tenis para niños'];
+
+  const handleCategoriaClick = (categoria) => {
+    // Manejar el clic en la categoría aquí
+    setCategoriaSeleccionada(categoria);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar categorias={categorias} onCategoriaClick={handleCategoriaClick} />
+      {categoriaSeleccionada && <p>Categoría seleccionada: {categoriaSeleccionada}</p>}
     </div>
   );
 }
 
 export default App;
+

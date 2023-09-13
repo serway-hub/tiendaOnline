@@ -10,11 +10,11 @@ const Navbar = () => {
         </div>
         <div className='flex justify-around'>
             <nav>
-                <ul className='flex gap-[20px]'>
-                    <li>Categorias</li>
-                    <li>Ofertas</li>
-                    <li>Moda</li>
-                    <li>Contactenos</li>
+                <ul className='flex gap-[20px] cursor-pointer'>
+                    <li className='cursor-pointer'><a href='#'>Categorias</a></li>
+                    <li><a href='#'>Ofertas</a></li>
+                    <li><a href='#'>Moda</a></li>
+                    <li><a href='#'>Contactenos</a></li>
                 </ul>
             </nav>
             <Navbaringreso/>

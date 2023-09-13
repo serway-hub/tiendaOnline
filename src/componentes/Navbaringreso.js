@@ -5,8 +5,8 @@ export const Navbaringreso = () => {
     
         <nav>
             <ul className='flex gap-[30px]'>
-                <li>Crea tu Cuenta</li>
-                <li>Ingresa</li>
+                <li><a href='#'>Crea tu Cuenta</a></li>
+                <li><a href='#'>Ingresa</a></li>
             </ul>
         </nav>
     

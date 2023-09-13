@@ -1,32 +1,21 @@
 import React from 'react';
-import logo from '../imagenes/greyka_store_logo.webp'
-import icon from '../imagenes/iconos/search (2).svg'
-
-const Navbar = ({ categorias, onCategoriaClick }) => {
+import { Navbaringreso } from './Navbaringreso';
+const Navbar = () => {
   return (
-    <header>
-        <div>
-            <img src={logo} alt='Logo greykastore'></img>
-        </div>
-        <div>
-            <form>
-                <input type='text' placeholder='Buscar los Mejores prodctos'></input>
-                <button type='submit'><img src={icon} alt='buscar productos'></img></button>
-            </form>
-        </div>
+    <div className='flex justify-around'>
         <nav>
-        <ul>
-            {categorias.map((categoria, index) => (
-            <li key={index}>
-                <button onClick={() => onCategoriaClick(categoria)}>{categoria}</button>
-            </li>
-            ))}
-        </ul>
+            <ul className='flex gap-[20px]'>
+                <li>Categorias</li>
+                <li>Ofertas</li>
+                <li>Moda</li>
+                <li>Contactenos</li>
+            </ul>
         </nav>
+        <Navbaringreso/>
 
+    </div>
+  )
+}
 
-    </header>
-  );
-};
+export default Navbar
 
-export default Navbar;

@@ -1,14 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export const Navbaringreso = () => {
+
+const Navbaringreso = () => {
   return (
     
         <nav>
             <ul className='flex gap-[30px]'>
-                <li><a href='#'>Crea tu Cuenta</a></li>
-                <li><a href='#'>Ingresa</a></li>
+                <li><Link to='/cuenta'>Crea tu Cuenta</Link></li>
+                <li><Link to='/loguin'>Ingresa</Link></li>
             </ul>
         </nav>
     
   )
 }
+export default Navbaringreso

@@ -12,9 +12,9 @@ function App() {
     <div>
       <BrowserRouter>
         <Navbar/>
-      
-
-        <ItemsListContainer greeting="bienvenido a greyka store"/>
+        <Routes>
+          <Route path='/' element={<ItemsListContainer greeting='bienvenido a greyka store'/>} />
+        </Routes>
       
       </BrowserRouter>
     </div>

@@ -1,0 +1,221 @@
+[
+    {
+        "id": "PG1",
+        "name": "Tenis Dsquarded para Hombre",
+        "variant": [
+            {
+                "variantId":"SG1",
+                "image":"../imagenes/productos/tenisdscuaredII.webp",
+                "color": "Negro",
+                "sizeStock": [
+                    { "size": "7 us", "quantity": 12 },
+                    { "size": "8 us", "quantity": 1 },
+                    { "size": "8.5 us", "quantity": 5 },
+                    { "size": "9.5 us", "quantity": 55 },
+                    { "size": "10 us", "quantity": 1 }
+                ],
+                "Price": 450000
+            },
+            {
+                "variantId":"SG2",
+                "image":"../imagenes/productos/Dsquarde.WEBP",
+                "color": "Azul",
+                "sizeStock": [
+                    { "size": "8 us", "quantity": 12 },
+                    { "size": "9 us", "quantity": 8 }
+                ],
+                "Price": 160000
+            }
+        ],
+        "description":"En esta colección se utilizan nuevas combinaciones de materiales y colores que confieren un toque exquisito a los diseños más emblemáticos de la Firma. Estas zapatillas Screener son un regalo cargado de simbolismo ideal para demostrar amor, ya que se han fabricado en piel con estampado floral, la tribanda Web y un sinfín de detalles como el emblema de Doble G, un logotipo vintage, una suela con plataforma plana de dos colores y unos cordones gruesos.",
+        "category": "hombre"
+    },
+    {
+        "id": "PG2",
+        "name": "Buso Gucci Para hombre",
+        "variant": [
+            {
+                "variantId":"SG1",
+                "image":"../imagenes/productos/busoGucci.WEBP",
+                "color": "Negro",
+                "sizeStock": [
+                    { "size": "S", "quantity": 12 },
+                    { "size": "M", "quantity": 1 },
+                    { "size": "L", "quantity": 5 }
+                ],
+                "Price": 350000
+            },
+            {
+                "variantId":"SG2",
+                "image":"../imagenes/productos/BUSOGUCCI.webp",
+                "color": "Azul",
+                "sizeStock": [
+                    { "size": "S", "quantity": 12 },
+                    { "size": "M", "quantity": 1 },
+                    { "size": "L", "quantity": 5 }
+                ],
+                "Price": 1160000
+            }
+        ],
+        "description":"En esta colección se utilizan nuevas combinaciones de materiales y colores que confieren un toque exquisito a los diseños más emblemáticos de la Firma. Estas zapatillas Screener son un regalo cargado de simbolismo ideal para demostrar amor, ya que se han fabricado en piel con estampado floral, la tribanda Web y un sinfín de detalles como el emblema de Doble G, un logotipo vintage, una suela con plataforma plana de dos colores y unos cordones gruesos.",
+        "category": "hombre"
+    },
+    {
+        "id": "PG3",
+        "name": "Tenis Jordan para niño",
+        "variant": [
+            {
+                "variantId":"SG1",
+                "image":"../imagenes/productos/jordan.WEBP",
+                "color": "Azul",
+                "sizeStock": [
+                    { "size": "32", "quantity": 12 },
+                    { "size": "33", "quantity": 1 },
+                    { "size": "34", "quantity": 5 }
+                ],
+                "Price": 350000
+            },
+            {
+                "variantId":"SG2",
+                "image":"../imagenes/productos/tenisjordanII.webp",
+                "color": "Azul",
+                "sizeStock": [
+                    { "size": "32", "quantity": 12 },
+                    { "size": "33", "quantity": 1 },
+                    { "size": "34", "quantity": 5 }
+                ],
+                "Price": 260000
+            }
+        ],
+        "description":"tenis Air Jordan 1 Lucky Green Verde, negro, blanco, piel de becerro, detalle del logo Swoosh característico, logo Air Jordan Wings característico, puntera redonda, cierre con agujetas en la parte delantera, parche del logo en la lengüeta, plantilla con logo y suela de goma. Estos estilos son suministrados por un marketplace de tenis, el cual ofrece los artículos más codiciados y difíciles de encontrar de todo el mundo.",
+        "category": "nino"   
+    },
+    {
+        "id": "PG4",
+        "name": "Tenis Kyrie Irving",
+        "variant": [
+            {
+                "variantId":"SG1",
+                "image":"../imagenes/productos/kyrieIrvin.WEBP",
+                "color": "Rosa",
+                "inventarioPorsize": [
+                    { "size": "7 us", "quantity": 12 },
+                    { "size": "8 us", "quantity": 1 },
+                    { "size": "8.5 us", "quantity": 5 }
+                ],
+                "Price": 650000
+            },
+            {
+                "variantId":"SG2",
+                "image": "../imagenes/productos/teniskyrieirvirn.webp",
+                "color": "Azul",
+                "inventarioPorsize": [
+                    { "size": "7 us" ,"quantity": 12 },
+                    { "size": "8 us", "quantity": 1 },
+                    { "size": "8.5 us", "quantity": 5 }
+                ],
+                "Price": 1160000
+            }
+        ],
+        "description":"tenis Kyrie 6 Puntera redonda, suela plana de goma, cierre con agujetas en la parte delantera, plantilla con logo y detalle del logo. Material: Cuero. Estos estilos son suministrados por un marketplace de tenis, el cual ofrece los artículos más codiciados y difíciles de encontrar de todo el mundo.",
+        "category": "mujer"
+    },
+    {
+        "id": "PG5",
+        "name": "Sueter FB",
+        "variant": [
+            {
+                "variantId":"SG1",
+                "image":"../imagenes/productos/sueterGB.WEBP",
+                "color": "Blanco",
+                "sizeStock": [
+                    { "size": "S", "quantity": 12 },
+                    { "size": "M", "quantity": 1 },
+                    { "size": "L", "quantity": 5 }
+                ],
+                "Price": 350000
+            },
+            {
+                "variantId":"SG2",
+                "image":"../imagenes/productos/balenciagaT.webp",
+                "color": "negro",
+                "sizeStock": [
+                    { "size": "S", "quantity": 12 },
+                    { "size": "M", "quantity": 1 },
+                    { "size": "L", "quantity": 5 },
+                    { "size": "x", "quantity":5}
+                ],
+                "Price": 660000
+            }
+        ],
+        "description":"Los pantalones cargo Nike Sportswear Club Fleece le dan un toque atlético al clásico estilo cargo. Confeccionados con tela cepillada suave, son cómodos para usar todo el día.",
+        "category": "hombre"
+    },
+    {
+        "id": "PG6",
+        "name": "Tenis Bota Armani",
+        "variant": [
+            {
+                "variantId":"SG1",
+                "image":"../imagenes/productos/TenisArmani.WEBP",
+                "color": "Azul",
+                "sizeStock": [
+                    { "size": "7 us", "quantity": 12 },
+                    { "size": "8 us", "quantity": 1 },
+                    { "size": "9.5 us", "quantity": 5 },
+                    { "size": "10 us", "quantity": 5 }
+                ],
+                "Price": 650000
+            },
+            {
+                "variantId":"SG2",
+                "image":"../imagenes/productos/armani.webp",
+                "color": "gris",
+                "sizeStock": [
+                    { "size": "7 us", "quantity": 12 },
+                    { "size": "8 us", "quantity": 1 },
+                    { "size": "9.5 us", "quantity": 5 },
+                    { "size": "10 us", "quantity": 5 }
+                ],
+                "Price": 460000
+            }
+        ],
+        "description":"Diseño de paneles, paneles de malla, logo estampado en el lateral, lengüeta con logo estampado, logo en el contrafuerte, puntera redonda, cierre con cordones en la parte delantera, plantilla con logo y suela plana de goma",
+        "category": "hombre"
+    },
+    {
+        "id": "PG7",
+        "name": "Tenis balmain para hombre",
+        "variant": [
+            {
+                "variantId":"SG1",
+                "image":"../imagenes/productos/tenisBalmain.WEBP",
+                "color": "Azul",
+                "sizeStocks": [
+                    { "size": "7 us", "quantity": 12 },
+                    { "size": "8 us", "quantity": 1 },
+                    { "size": "9.5 us", "quantity": 5 },
+                    { "size": "10 us", "quantity": 5 }
+                ],
+                "Price": 1350000
+            },
+            {
+                "variantId":"SG2",
+                "image":"../imagenes/productos/balmian.webp",
+                "color": "Negro",
+                "sizeStocks": [
+                    { "size": "7 us", "quantity": 12 },
+                    { "size": "8 us", "quantity": 1 },
+                    { "size": "9.5 us", "quantity": 5 },
+                    { "size": "10 us", "quantity": 5 }
+                ],
+                "Price": 1160000
+            }
+        ],
+        "description":"Negro, piel de becerro, logo estampado en el lateral, logo en relieve en el lateral, cierre con agujetas en la parte delantera, plantilla con logo, suela gruesa de goma y puntera redonda.",
+        "category": "hombre"
+    }
+        
+]
+
+

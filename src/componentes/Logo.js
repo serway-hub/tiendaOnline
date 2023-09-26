@@ -1,6 +1,6 @@
 import React from 'react'
-import logo from '../imagenes/greyka_store_logo.webp'
-import logosearch from '../imagenes/iconos/search.svg'
+import logo from '../componentes/iconos/greyka_store_logo.webp'
+import logosearch from '../componentes/iconos/search.svg'
 
 
 

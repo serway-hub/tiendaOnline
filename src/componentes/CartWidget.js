@@ -1,5 +1,5 @@
 import React from 'react'
-import cartIcon from '../imagenes/iconos/cart-shopping-solid.svg'
+import cartIcon from '../componentes/iconos/cart-shopping-solid.svg'
 
 const CartWidget = () => {
   return (

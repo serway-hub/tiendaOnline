@@ -29,7 +29,7 @@ const Item = ({item}) => {
     console.log(variantImage)
 
     const prices = variantData.map((variantItem)=>(
-        <span key={variantItem.variantId} id={variantItem.variantId}>{variantItem.Price}</span>
+        <span key={variantItem.variantId} id={variantItem.variantId} className={`price-${variantItem.variantId}`}>{variantItem.Price}</span>
     ))
     const colorVariant = variantData.map((variantItem)=>(
         <button key={variantItem.color} id={variantItem.variantId}>{variantItem.color}</button>
@@ -38,11 +38,11 @@ const Item = ({item}) => {
 
   return (
     
-    <Link to={{pathname: `/item/${item.id}`,state:{item}}} className='product'>
+    <Link to={{pathname: `/item/${item.id}`}} className='product'>
         <div className='flex'>
             <div>
                 {variantImage}
-                <div>
+                <div className='grid'>
                     <p>{name}</p>
                     <span>{rangoPrecio}</span>
                     {prices}
@@ -50,6 +50,7 @@ const Item = ({item}) => {
                 <div>
                     {colorVariant}
                 </div>
+                <button>Agregar al carrito</button>
             </div>
         </div>
     </Link>

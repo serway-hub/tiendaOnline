@@ -4,7 +4,7 @@ import ItemsListContainer from './componentes/ItemsListContainer';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import ItemsDetailContainer from './componentes/ItemsDetailContainer';
 import Error404 from './componentes/Error404';
-
+import ItemDetail from './componentes/ItemDetail';
 
 
 
@@ -20,6 +20,7 @@ function App() {
           <Route path={'/'} element={<ItemsListContainer greeting='bienvenido a greyka store'/>} />
           <Route path={'/category/:id'} element={<ItemsListContainer />} />
           <Route path={'/item/:id'} element={<ItemsDetailContainer />} />
+          <Route path={'/item/:id'} element={<ItemDetail />} />
           {/* <Route path={'/*'} element={<Error404 />} /> */}
         </Routes>
       

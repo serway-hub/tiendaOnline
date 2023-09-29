@@ -1,16 +1,60 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import ItemCount from './ItemCount'
-import Item from './Item'
+import { useParams } from 'react-router-dom'
+import arrayProducts from '../Json/arrayProducts.json'
 
-const ItemDetail = ({item}) => {
+const ItemDetail = () => {
+  const { id } = useParams()
+  const [product, setproduct] = useState(null)
+
+  useEffect(()=>{
+    const getProductDetail = async () =>{
+      try {
+        const selectProduct = arrayProducts.find((item) => item.id === id)
+        setproduct(selectProduct)
+      } catch (error) {
+        console.error('error fetching product detail', error)
+      }
+    }
+    getProductDetail()
+  },[id])
+
+
+  
+
   return (
+    
     <div>
-      
-      <div>
+      {product ? (
         
         
-      </div>
+        
+        <div>
+          <div>
+            {product.variant.map((item)=>(
+              <div key={item.variantId}>
+                <img src={item.image} alt={item.name} id={item.variantId}/>
 
+              </div>
+
+            ))}
+          </div>
+          <h1>{product.name}</h1>
+          <h1>{product.category}</h1>
+          <h1>{product.description}</h1>
+          
+          <div>
+            <ItemCount/>
+
+          </div>
+          
+
+        </div>
+
+      ): (
+        <p>capo</p>
+      )}
+    
     </div>
   )
 }

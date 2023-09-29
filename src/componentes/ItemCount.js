@@ -18,10 +18,6 @@ const ItemCount = ({stockItems}) => {
         }
     }
 
-    
-
-
-
   return (
     <div>
         <div>

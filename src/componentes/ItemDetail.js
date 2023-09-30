@@ -72,7 +72,7 @@ const ItemDetail = () => {
                   
                   <div>
                     <ItemCount stockItems={product.variant.reduce((acc,variant) => acc + variant.sizeStock.length,0)}/>
-
+                    <span></span>
                   </div>
                 </div>
               </div>

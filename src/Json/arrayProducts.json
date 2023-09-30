@@ -78,7 +78,7 @@
             {
                 "variantId":"SG2",
                 "image":"../imagenes/productos/tenisjordanII.webp",
-                "color": "Azul",
+                "color": "Verde",
                 "sizeStock": [
                     { "size": "32", "quantity": 12 },
                     { "size": "33", "quantity": 1 },

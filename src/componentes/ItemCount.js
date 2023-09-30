@@ -20,14 +20,14 @@ const ItemCount = ({stockItems}) => {
 
   return (
     <div>
-        <div>
-            <button type='button' onClick={minusStock}>-</button>
-            <button type='button'>{counter}</button>
-            <button type='button' onClick={plusStock}>+</button>
+        <div className='mb-[30px] mt-[30px]'>
+            <button className="bg-[#eeeeee] w-[30px] h-[30px] text-2xl" type='button' onClick={minusStock}>-</button>
+            <button  className='button w-[40px] text-2xl'>{counter}</button>
+            <button className="bg-[#eeeeee] w-[30px] h-[30px] text-2xl" type='button' onClick={plusStock}>+</button>
             
         </div>
         <div>
-            <button>Agregar al Carrito</button>
+            <button className='bg-indigo-500 w-full h-[60px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-2 hover:font-medium text-2xl '>Agregar al Carrito</button>
         </div>
     </div>
   )

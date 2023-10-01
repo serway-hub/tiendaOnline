@@ -61,7 +61,7 @@ const ItemDetail = () => {
                   </span>
 
                   {product.variant.map((item)=>(
-                    <div key={item.variantId} className='flex gap-[10px] mb-[10px] mt-[40px]'>
+                    <div key={item.variantId} id={item.variantId} value={product.id} className={`flex gap-[10px] mb-[10px] mt-[40px] size-${item.variantId} `}>
                       <span>Talla:</span>
                       {item.sizeStock.map((itemSise) => (
                         
@@ -78,7 +78,7 @@ const ItemDetail = () => {
                     <span className='text-3xl'>{rangoPrecio}</span>
                     {product.variant.map((item)=>(
                       
-                      <span key={item.variantId} className={`w-full h-auto text-2xl variationImage-${item.variantId}`}>{formatPrice(item.Price)}</span>  
+                      <span key={item.variantId} className={`w-full h-auto text-2xl variationPrice-${item.variantId}`}>{formatPrice(item.Price)}</span>  
                     ))}
                   </div>
                   

@@ -20,6 +20,13 @@ const ItemDetail = () => {
     getProductDetail()
   },[id])
 
+  const precioVariantes = product.variant.map(variant => variant.Price)
+
+  const precioMinimo  = Math.min(...precioVariantes)
+  const precioMaximo = Math.max(...precioVariantes)
+
+  const rangoPrecio = `${formatPrice(precioMinimo)}-${formatPrice(precioMaximo)}`
+
 
   
 
@@ -46,7 +53,7 @@ const ItemDetail = () => {
                     <div className='flex text-2xl gap-[20px] '>
 
                       {product.variant.map((item)=>(
-                        <button key={item.variantId} className='bg-indigo-500 w-[100px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-2 hover:font-medium'>{item.color}</button>
+                        <button key={item.variantId} className='bg-blue-600 w-[100px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]'>{item.color}</button>
                         
                       ))}
                     </div>
@@ -58,7 +65,7 @@ const ItemDetail = () => {
                       <span>Talla:</span>
                       {item.sizeStock.map((itemSise) => (
                         
-                        <button key={itemSise.size} className='bg-[#0085d0] w-[3rem] h-[3rem] rounded-lg text-[#ffffff] font-bold'>{itemSise.size}</button>
+                        <button id={product.id} value={item.variantId}key={itemSise.size} className='bg-blue-600 w-[3rem] h-[3rem]text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]'>{itemSise.size}</button>
                         
                       ))}
                     </div>
@@ -66,20 +73,21 @@ const ItemDetail = () => {
 
                 </div>
                 <div className='w-full'>
-                  {product.variant.map((item)=>(
-                    <span key={item.variantId} className={`w-full h-auto text-2xl variationImage-${item.variantId}`}>{formatPrice(item.Price)}</span>  
-                  ))}
+                  <div className='flex flex-col'>
+
+                    <span className='text-3xl'>{rangoPrecio}</span>
+                    {product.variant.map((item)=>(
+                      
+                      <span key={item.variantId} className={`w-full h-auto text-2xl variationImage-${item.variantId}`}>{formatPrice(item.Price)}</span>  
+                    ))}
+                  </div>
                   
                   <div>
-                    <ItemCount stockItems={product.variant.reduce((acc,variant) => acc + variant.sizeStock.length,0)}/>
+                    <ItemCount stockItems={10}/>
                     <span></span>
                   </div>
                 </div>
               </div>
-
-            
-  
-            
             
           </div>
           

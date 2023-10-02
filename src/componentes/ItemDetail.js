@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import arrayProducts from '../Json/arrayProducts.json'
 import { formatPrice} from '../api/apiDivisas'
 import Item from './Item'
+import logo from '../componentes/iconos/greyka_store_logo.webp'
 
 const ItemDetail = () => {
   const { id } = useParams()
@@ -63,6 +64,12 @@ const ItemDetail = () => {
               </div>
               <div className='flex justify-around mt-[20px]'>
                 <div className='w-full'>
+                  <div className='flex items-center'>
+                    <span>Vendido por </span>
+                    <img src={logo} className='w-[40px]'></img>
+                    <span className=''>Greyka Store</span>
+
+                  </div>
 
                   <span className='flex flex-col'>
                     <span>Color:</span>

@@ -136,7 +136,14 @@ const ItemDetail = () => {
                   </div>
                   
                   <div>
-                    <ItemCount stockItems={10}/>
+                    <ItemCount stockItems={
+                      product.variant.find(
+                        (item) =>
+                          (showFirstImage && item.variantId === 'SG1') ||
+                          (showSecondImage && item.variantId === 'SG2')
+                      ).sizeStock.find((itemSize) => itemSize.size === selectedSize)?.quantity || 0
+                      
+                    }/>
                     <span className='flex absolute gap-[5px] top-[292px] left-[1050px]'>
                       <p>Maximo</p>
                       {product.variant.find(

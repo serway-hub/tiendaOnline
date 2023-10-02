@@ -10,6 +10,9 @@ const ItemDetail = () => {
   const [product, setproduct] = useState(null)
   const [selectColor, setSelectColor] = useState(null)
   const [showFirstImage, setShowFirstImage] = useState(true)
+  const [showSecondImage, setShowSecondImage] = useState(false)
+  const [rangPrecio, setRangPrecio] = useState(true)
+
 
   
   
@@ -44,7 +47,13 @@ const ItemDetail = () => {
         <div className='flex flex-row ml-5 mr-5'>
           <div className='imageCol w-[40%]'>
             {product.variant.map((item)=>(
-              <img key={item.variantId} src={item.image} alt={item.name} id={item.variantId} className={`w-full h-[589.75px] ${showFirstImage && item.variantId ==="SG1"  ? "":"hidden"}`}/> 
+              <img key={item.variantId} src={item.image} alt={item.name} id={item.variantId} className={`w-full h-[589.75px] ${
+                  showFirstImage && item.variantId === 'SG1'
+                    ? ''
+                    : showSecondImage && item.variantId === 'SG2'
+                    ? ''
+                    : 'hidden'
+                }`}/> 
             ))}
           </div>
           <div className='ml-5 mr-5 flex flex-col w-[60%]'>
@@ -61,7 +70,15 @@ const ItemDetail = () => {
 
                       {product.variant.map((item)=>(
                         <button key={item.variantId} className='bg-blue-600 w-[100px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]' 
-                          onClick={() =>{setShowFirstImage(item.variantId === "SG1")
+                          
+                        onClick={() =>{
+                          if (item.variantId ==="SG1"){
+                            setShowFirstImage(true)
+                            setShowSecondImage(false)
+                          } else if (item.variantId ==="SG2"){
+                            setShowFirstImage(false)
+                            setShowSecondImage(true)
+                          }
                         }}>{item.color}</button>
                         
                       ))}
@@ -70,11 +87,19 @@ const ItemDetail = () => {
                   </span>
 
                   {product.variant.map((item)=>(
-                    <div key={item.variantId} id={item.variantId} value={product.id} className={`flex gap-[10px] mb-[10px] mt-[40px] size-${item.variantId} `}>
+                    <div key={item.variantId} id={item.variantId} value={product.id} className={`flex gap-[10px] mb-[10px] mt-[40px] ${
+                      showFirstImage && item.variantId === 'SG1'
+                        ? ''
+                        : showSecondImage && item.variantId === 'SG2'
+                        ? ''
+                        : 'hidden'
+                    }`}>
                       <span>Talla:</span>
                       {item.sizeStock.map((itemSise) => (
                         
-                        <button id={product.id} value={item.variantId}key={itemSise.size} className='bg-blue-600 w-[3rem] h-[3rem]text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]'>{itemSise.size}</button>
+                        <button id={product.id} value={item.variantId}key={itemSise.size} className={`bg-blue-600 w-[3rem] h-[3rem]text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040] 
+                        
+                        }` }>{itemSise.size}</button>
                         
                       ))}
                     </div>
@@ -84,10 +109,18 @@ const ItemDetail = () => {
                 <div className='w-full'>
                   <div className='flex flex-col'>
 
-                    <span className='text-3xl'>{rangoPrecio}</span>
+                    <span className={`text-3xl `}>{rangoPrecio}</span>
                     {product.variant.map((item)=>(
                       
-                      <span key={item.variantId} className={`w-full h-auto text-2xl variationPrice-${item.variantId}`}>{formatPrice(item.Price)}</span>  
+                      <span key={item.variantId} className={`w-full h-auto text-2xl variationPrice-${item.variantId} 
+                      ${
+                        showFirstImage && item.variantId === 'SG1'
+                          ? ''
+                          : showSecondImage && item.variantId === 'SG2'
+                          ? ''
+                          : 'hidden'
+                      }
+                      `}>{formatPrice(item.Price)}</span>  
                     ))}
                   </div>
                   

@@ -3,7 +3,6 @@ import { useState,useEffect } from 'react'
 
 
 const ItemCount = ({stockItems}) => {
-    console.log(typeof(stockItems))
     const [counter,setCounter] = useState(1)
     const [stock,setStock] =useState(stockItems)
 

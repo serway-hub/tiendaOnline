@@ -9,10 +9,12 @@ import logo from '../componentes/iconos/greyka_store_logo.webp'
 const ItemDetail = () => {
   const { id } = useParams()
   const [product, setproduct] = useState(null)
-  const [selectColor, setSelectColor] = useState(null)
   const [showFirstImage, setShowFirstImage] = useState(true)
   const [showSecondImage, setShowSecondImage] = useState(false)
   const [selectedSize, setSelectedSize] = useState(null)
+  const [selectedColor, setSelectedColor] = useState(null);
+  
+
 
 
   
@@ -37,9 +39,21 @@ const ItemDetail = () => {
 
   const rangoPrecio = `${formatPrice(precioMinimo)}-${formatPrice(precioMaximo)}`
 
- 
+  const handleColorClick = (item) => {
+    if (item.variantId === 'SG1') {
+      setShowFirstImage(true);
+      setShowSecondImage(false);
+    } else if (item.variantId === 'SG2') {
+      setShowFirstImage(false);
+      setShowSecondImage(true);
+    }
+    setSelectedColor(item.variantId);
+  };
 
-  
+   // Función para manejar la selección de talla
+   const handleSizeClick = (itemSize) => {
+    setSelectedSize(itemSize.size);
+  };
 
   return (
     
@@ -76,17 +90,11 @@ const ItemDetail = () => {
                     <div className='flex text-2xl gap-[20px] '>
 
                       {product.variant.map((item)=>(
-                        <button key={item.variantId} className='bg-blue-600 w-[100px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]' 
-                          
-                        onClick={() =>{
-                          if (item.variantId ==="SG1"){
-                            setShowFirstImage(true)
-                            setShowSecondImage(false)
-                          } else if (item.variantId ==="SG2"){
-                            setShowFirstImage(false)
-                            setShowSecondImage(true)
-                          }
-                        }}>{item.color}</button>
+                        <button key={item.variantId} className={`bg-blue-600 w-[100px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring-4 focus:bg-[#ffa040] active:bg-[#ffa040] ${
+                          selectedColor === item.variantId ? 'bg-[#ffa040]' : 'bg-blue-600'
+                        }`} 
+                        onClick={() => handleColorClick(item)                      
+                        }>{item.color}</button>
                         
                       ))}
                     </div>
@@ -108,14 +116,13 @@ const ItemDetail = () => {
                         id={product.id} 
                         value={item.variantId} 
                         key={itemSise.size} 
-                        className={`bg-blue-600 w-[3rem] h-[3rem]text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]}`
+                        className={`bg-blue-600 w-[3rem] h-[3rem]text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]${
+                          selectedSize === itemSise.size ? 'focus:ring-4 focus:bg-[#ffa040] active:bg-[#ffa040]' : ''
+                        }}`
                       
                         }
-                        onClick={()=>{
-                          console.log(itemSise.size)
-                          setSelectedSize(itemSise.size)
-
-                        }}
+                        onClick={()=> handleSizeClick(itemSise)
+                        }
                         
                         >{itemSise.size}</button>
                         

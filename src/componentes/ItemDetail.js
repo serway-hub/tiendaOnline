@@ -11,7 +11,7 @@ const ItemDetail = () => {
   const [selectColor, setSelectColor] = useState(null)
   const [showFirstImage, setShowFirstImage] = useState(true)
   const [showSecondImage, setShowSecondImage] = useState(false)
-  const [rangPrecio, setRangPrecio] = useState(true)
+  const [selectedSize, setSelectedSize] = useState(null)
 
 
   
@@ -97,9 +97,20 @@ const ItemDetail = () => {
                       <span>Talla:</span>
                       {item.sizeStock.map((itemSise) => (
                         
-                        <button id={product.id} value={item.variantId}key={itemSise.size} className={`bg-blue-600 w-[3rem] h-[3rem]text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040] 
+                        <button 
+                        id={product.id} 
+                        value={item.variantId} 
+                        key={itemSise.size} 
+                        className={`bg-blue-600 w-[3rem] h-[3rem]text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]}`
+                      
+                        }
+                        onClick={()=>{
+                          console.log(itemSise.size)
+                          setSelectedSize(itemSise.size)
+
+                        }}
                         
-                        }` }>{itemSise.size}</button>
+                        >{itemSise.size}</button>
                         
                       ))}
                     </div>
@@ -125,11 +136,19 @@ const ItemDetail = () => {
                   </div>
                   
                   <div>
-                    <ItemCount stockItems={10
+                    <ItemCount stockItems={10}/>
+                    <span className='flex absolute gap-[5px] top-[292px] left-[1050px]'>
+                      <p>Maximo</p>
+                      {product.variant.find(
+                          (item) =>
+                            (showFirstImage && item.variantId === 'SG1') ||
+                            (showSecondImage && item.variantId === 'SG2')
+                        ).sizeStock.find((itemSize) => itemSize.size === selectedSize)?.quantity || 0
+                      }
+                      <p> disponibles</p>
 
-                    
-                    }/>
-                    <span></span>
+                    </span>
+                   
                   </div>
                 </div>
               </div>

@@ -98,7 +98,7 @@
                 "variantId":"SG1",
                 "image":"../imagenes/productos/kyrieIrvin.WEBP",
                 "color": "Rosa",
-                "inventarioPorsize": [
+                "sizeStock": [
                     { "size": "7 us", "quantity": 12 },
                     { "size": "8 us", "quantity": 1 },
                     { "size": "8.5 us", "quantity": 5 }
@@ -109,7 +109,7 @@
                 "variantId":"SG2",
                 "image": "../imagenes/productos/teniskyrieirvirn.webp",
                 "color": "Azul",
-                "inventarioPorsize": [
+                "sizeStock": [
                     { "size": "7 us" ,"quantity": 12 },
                     { "size": "8 us", "quantity": 1 },
                     { "size": "8.5 us", "quantity": 5 }
@@ -191,7 +191,7 @@
                 "variantId":"SG1",
                 "image":"../imagenes/productos/tenisBalmain.WEBP",
                 "color": "Azul",
-                "sizeStocks": [
+                "sizeStock": [
                     { "size": "7 us", "quantity": 12 },
                     { "size": "8 us", "quantity": 1 },
                     { "size": "9.5 us", "quantity": 5 },
@@ -203,7 +203,7 @@
                 "variantId":"SG2",
                 "image":"../imagenes/productos/balmian.webp",
                 "color": "Negro",
-                "sizeStocks": [
+                "sizeStock": [
                     { "size": "7 us", "quantity": 12 },
                     { "size": "8 us", "quantity": 1 },
                     { "size": "9.5 us", "quantity": 5 },

@@ -3,10 +3,16 @@ import ItemCount from './ItemCount'
 import { useParams } from 'react-router-dom'
 import arrayProducts from '../Json/arrayProducts.json'
 import { formatPrice} from '../api/apiDivisas'
+import Item from './Item'
 
 const ItemDetail = () => {
   const { id } = useParams()
   const [product, setproduct] = useState(null)
+  const [selectColor, setSelectColor] = useState(null)
+  const [showFirstImage, setShowFirstImage] = useState(true)
+
+  
+  
 
   useEffect(()=>{
     const getProductDetail = async () =>{
@@ -20,13 +26,14 @@ const ItemDetail = () => {
     getProductDetail()
   },[id])
 
-  const precioVariantes = product.variant.map(variant => variant.Price)
+  const precioVariantes = product ? product.variant.map(variant => variant.Price) : []
 
   const precioMinimo  = Math.min(...precioVariantes)
   const precioMaximo = Math.max(...precioVariantes)
 
   const rangoPrecio = `${formatPrice(precioMinimo)}-${formatPrice(precioMaximo)}`
 
+ 
 
   
 
@@ -37,7 +44,7 @@ const ItemDetail = () => {
         <div className='flex flex-row ml-5 mr-5'>
           <div className='imageCol w-[40%]'>
             {product.variant.map((item)=>(
-              <img key={item.variantId} src={item.image} alt={item.name} id={item.variantId} className={`w-full h-[589.75px] variationImage-${item.variantId}`}/> 
+              <img key={item.variantId} src={item.image} alt={item.name} id={item.variantId} className={`w-full h-[589.75px] ${showFirstImage && item.variantId ==="SG1"  ? "":"hidden"}`}/> 
             ))}
           </div>
           <div className='ml-5 mr-5 flex flex-col w-[60%]'>
@@ -53,7 +60,9 @@ const ItemDetail = () => {
                     <div className='flex text-2xl gap-[20px] '>
 
                       {product.variant.map((item)=>(
-                        <button key={item.variantId} className='bg-blue-600 w-[100px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]'>{item.color}</button>
+                        <button key={item.variantId} className='bg-blue-600 w-[100px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]' 
+                          onClick={() =>{setShowFirstImage(item.variantId === "SG1")
+                        }}>{item.color}</button>
                         
                       ))}
                     </div>
@@ -83,7 +92,10 @@ const ItemDetail = () => {
                   </div>
                   
                   <div>
-                    <ItemCount stockItems={10}/>
+                    <ItemCount stockItems={10
+
+                    
+                    }/>
                     <span></span>
                   </div>
                 </div>

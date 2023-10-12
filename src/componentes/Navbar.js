@@ -35,7 +35,7 @@ const Navbar = () => {
                     <li><Link to='/contactenos'>Contactenos</Link></li>
                 </ul>
             </nav>
-            <Navbaringreso/>
+            
         </div>
     </header>
   )

@@ -94,12 +94,11 @@ const ItemDetail = () => {
                     <div className='flex text-2xl gap-[20px] '>
 
                       {product.variant.map((item)=>(
-                        <button key={item.variantId} className={`bg-blue-600 w-[100px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring-4 focus:bg-[#ffa040] active:bg-[#ffa040] ${
-                          selectedColor === item.variantId ? 'bg-[#ffa040]' : 'bg-blue-600'
+                        <button key={item.variantId} className={`bg-blue-600 w-auto text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring-4 focus:bg-[#ffa040] active:bg-[#ffa040] ${
+                          selectedColor === item.variantId ? 'focus:ring-4 focus:bg-[#ffa040] active:bg-[#ffa040]' : 'bg-blue-600'
                         }`} 
                         onClick={() => 
-                          handleColorClick(item)
-                                                
+                          handleColorClick(item)         
                         }>{item.color}</button>
                         
                       ))}
@@ -107,7 +106,7 @@ const ItemDetail = () => {
 
                   </span>
 
-                  {product.variant.map((item)=>(
+                  { product.variant.map((item)=>(
                     <div key={item.variantId} id={item.variantId} value={product.id} className={`flex gap-[10px] mb-[10px] mt-[40px] ${
                       showFirstImage && item.variantId === 'SG1'
                         ? ''
@@ -122,7 +121,7 @@ const ItemDetail = () => {
                         id={product.id} 
                         value={item.variantId} 
                         key={itemSise.size} 
-                        className={`bg-blue-600 w-[3rem] h-[3rem]text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]${
+                        className={`bg-blue-600 w-[80px] h-[3rem]text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring focus:bg-[#ffa040] active:bg-[#ffa040]${
                           selectedSize === itemSise.size ? 'focus:ring-4 focus:bg-[#ffa040] active:bg-[#ffa040]' : ''
                         }}`
                       

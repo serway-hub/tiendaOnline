@@ -12,14 +12,11 @@ const ItemDetail = () => {
   const [showFirstImage, setShowFirstImage] = useState(true)
   const [showSecondImage, setShowSecondImage] = useState(false)
   const [selectedSize, setSelectedSize] = useState(null)
-  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null)
+  const [showRangePrice, setShowRangePrice] = useState(true)
+  const [showFirtsPrice, setShowFirtsPrice] = useState(false)
+  const [showSecondPrice, setShowSecondPrice] = useState(false)
   
-
-
-
-  
-  
-
   useEffect(()=>{
     const getProductDetail = async () =>{
       try {
@@ -38,14 +35,21 @@ const ItemDetail = () => {
   const precioMaximo = Math.max(...precioVariantes)
 
   const rangoPrecio = `${formatPrice(precioMinimo)}-${formatPrice(precioMaximo)}`
-
+  
   const handleColorClick = (item) => {
     if (item.variantId === 'SG1') {
       setShowFirstImage(true);
-      setShowSecondImage(false);
+      setShowSecondImage(false)
+      setShowRangePrice(false)
+      setShowFirtsPrice(true)
+      setShowSecondPrice(false)
+      
     } else if (item.variantId === 'SG2') {
       setShowFirstImage(false);
       setShowSecondImage(true);
+      setShowRangePrice(false)
+      setShowFirtsPrice(false)
+      setShowSecondPrice(true)
     }
     setSelectedColor(item.variantId);
   };
@@ -93,7 +97,9 @@ const ItemDetail = () => {
                         <button key={item.variantId} className={`bg-blue-600 w-[100px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-4 hover:font-medium  px-4 py-2 text-white focus:ring-4 focus:bg-[#ffa040] active:bg-[#ffa040] ${
                           selectedColor === item.variantId ? 'bg-[#ffa040]' : 'bg-blue-600'
                         }`} 
-                        onClick={() => handleColorClick(item)                      
+                        onClick={() => 
+                          handleColorClick(item)
+                                                
                         }>{item.color}</button>
                         
                       ))}
@@ -134,16 +140,16 @@ const ItemDetail = () => {
                 <div className='w-full'>
                   <div className='flex flex-col'>
 
-                    <span className={`text-3xl `}>{rangoPrecio}</span>
+                    <span className={`text-3xl ${
+                      showRangePrice ? '': 'hidden'
+
+                    }`} >{rangoPrecio}</span>
                     {product.variant.map((item)=>(
                       
-                      <span key={item.variantId} className={`w-full h-auto text-2xl variationPrice-${item.variantId} 
+                      <span key={item.variantId} className={`w-full h-auto text-3xl variationPrice-${item.variantId} 
                       ${
-                        showFirstImage && item.variantId === 'SG1'
-                          ? ''
-                          : showSecondImage && item.variantId === 'SG2'
-                          ? ''
-                          : 'hidden'
+                        showFirtsPrice && showSecondPrice ? '': showFirtsPrice && item.variantId === 'SG1' ? '': showSecondPrice && item.variantId ==='SG2'? '': 'hidden'
+                       
                       }
                       `}>{formatPrice(item.Price)}</span>  
                     ))}
@@ -158,7 +164,7 @@ const ItemDetail = () => {
                       ).sizeStock.find((itemSize) => itemSize.size === selectedSize)?.quantity || 0
                       
                     }/>
-                    <span className='flex absolute gap-[5px] top-[292px] left-[1050px]'>
+                    <span className='flex absolute gap-[5px] top-[258px] left-[1050px]'>
                       <p>Maximo</p>
                       {product.variant.find(
                           (item) =>

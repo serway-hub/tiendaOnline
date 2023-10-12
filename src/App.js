@@ -6,6 +6,8 @@ import ItemsDetailContainer from './componentes/ItemsDetailContainer';
 import Error404 from './componentes/Error404';
 import ItemDetail from './componentes/ItemDetail';
 import Contactenos from './componentes/Contactenos';
+import Ofertas from './componentes/Ofertas'
+import Moda from './componentes/Moda'
 
 
 
@@ -22,6 +24,8 @@ function App() {
           <Route path={'/category/:id'} element={<ItemsListContainer />} />
           <Route path={'/item/:id'} element={<ItemsDetailContainer />} />
           <Route path={'/item/:id'} element={<ItemDetail />} />
+          <Route path={'/Ofertas'} element={<Ofertas/>}/>
+          <Route path={'/Moda'} element={<Moda/>}/>
           <Route path={'/contactenos'} element={<Contactenos/>}/>
           <Route path={'*'} element={<Error404 />} />
         </Routes>

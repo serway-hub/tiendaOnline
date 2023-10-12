@@ -8,7 +8,7 @@ const ItemList = ({item}) => {
                 <div key={item.id}>
                     <Item item={item}/>
                 </div>
-                )}
+            )}
 
         </div>
     )

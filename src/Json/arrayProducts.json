@@ -214,6 +214,71 @@
         ],
         "description":"Negro, piel de becerro, logo estampado en el lateral, logo en relieve en el lateral, cierre con agujetas en la parte delantera, plantilla con logo, suela gruesa de goma y puntera redonda.",
         "category": "hombre"
+    },
+    {
+        "id": "PG8",
+        "name": "Celular xiaomi Redmi Note 12 4G Dual SIM 128 GB ",
+        "variant": [
+            {
+                "variantId":"SG1",
+                "image":"../imagenes/productos/celularXiaomi.webp",
+                "color": "Onyx gray",
+                "sizeStock": [
+                    { "Memoria Ram": "4 GB", "Memoria Interna": "128 GB" ,"quantity": 12},
+                    { "Memoria Ram": "6 GB", "Memoria Interna": "64 GB" ,"quantity": 8},
+                    { "Memoria Ram": "8 GB", "Memoria Interna": "256 GB" ,"quantity": 1}
+
+                ],
+                "Price": 1350000,
+                "PriceOfer" : 800000
+            },
+            {
+                "variantId":"SG2",
+                "image":"../imagenes/productos/xiaomicelularII.webp",
+                "color": "Mint green",
+                "sizeStock": [
+                    { "Memoria Ram": "4 GB", "Memoria Interna": "128 GB","quantity": 1 },
+                    { "Memoria Ram": "6 GB", "Memoria Interna": "64 GB" ,"quantity": 454}
+                ],
+                "Price": 1160000,
+                "PriceOfer": 680000
+            }
+        ],
+        "description":"Fotografía profesional en tu bolsillo Descubre infinitas posibilidades para tus fotos con las 3 cámaras principales de tu equipo. Pon a prueba tu creatividad y juega con la iluminación, diferentes planos y efectos para obtener grandes resultados.",
+        "category": "ofertas"
+    },
+    {
+        "id": "PG9",
+        "name": "Vestido Largo Juvenil Manga Corta Moda Casua",
+        "variant": [
+            {
+                "variantId":"SG1",
+                "image":"../imagenes/productos/VESTIDOii.webp",
+                "color": "Negro Claro",
+                "sizeStock": [
+                    { "size": "XS", "quantity": 12 },
+                    { "size": "S", "quantity": 1 },
+                    { "size": "M", "quantity": 5 },
+                    { "size": "L", "quantity": 5 }
+                ],
+                "Price": 135000
+            },
+            {
+                "variantId":"SG2",
+                "image":"../imagenes/productos/vestido_dama.webp",
+                "color": "Negro",
+                "sizeStock": [
+                    { "size": "XS", "quantity": 12 },
+                    { "size": "S", "quantity": 1 },
+                    { "size": "M", "quantity": 5 },
+                    { "size": "L", "quantity": 5 }
+                ],
+                "Price": 116000
+            
+            }
+        ],
+        "description":"Fotografía profesional en tu bolsillo Descubre infinitas posibilidades para tus fotos con las 3 cámaras principales de tu equipo. Pon a prueba tu creatividad y juega con la iluminación, diferentes planos y efectos para obtener grandes resultados.",
+        "category": "moda"
     }
         
 ]

@@ -1,8 +1,16 @@
 import React from 'react'
+import Item from './Item'
+import arrayproduct from '../Json/arrayProducts.json'
 
 const Moda = () => {
+  const modaItems = arrayproduct.filter(item => item.category === 'moda');
+
   return (
-    <div><h1>aqui esta la moda</h1></div>
+    <div>
+      {modaItems.map(item => (
+        <Item key={item.id} item={item}/>
+      ))}
+    </div>
   )
 }
 

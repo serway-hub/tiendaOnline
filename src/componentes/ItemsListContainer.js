@@ -1,15 +1,23 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useContext} from 'react'
 import { useParams } from 'react-router-dom'
 import arrayProducts from '../Json/arrayProducts.json'
 import ItemList from './ItemList'
 
 
+
+
+
+
 const ItemsListContainer = ({greeting}) => {
+
+  
 
   const [item,setItem] =useState([])
   const {id} = useParams()
   const [loading,setLoading] = useState(true)
+
+  
 
 
 

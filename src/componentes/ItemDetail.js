@@ -6,6 +6,7 @@ import { formatPrice} from '../api/apiDivisas'
 import Item from './Item'
 import logo from '../componentes/iconos/greyka_store_logo.webp'
 
+
 const ItemDetail = () => {
   const { id } = useParams()
   const [product, setproduct] = useState(null)
@@ -13,6 +14,7 @@ const ItemDetail = () => {
   const [showSecondImage, setShowSecondImage] = useState(false)
   const [selectedSize, setSelectedSize] = useState(null)
   const [selectedColor, setSelectedColor] = useState(null)
+  const [selectedPrecio, setSelectedPrecio] = useState(null)
   const [showRangePrice, setShowRangePrice] = useState(true)
   const [showFirtsPrice, setShowFirtsPrice] = useState(false)
   const [showSecondPrice, setShowSecondPrice] = useState(false)
@@ -51,7 +53,9 @@ const ItemDetail = () => {
       setShowFirtsPrice(false)
       setShowSecondPrice(true)
     }
-    setSelectedColor(item.variantId);
+    setSelectedColor(item.color)
+    setSelectedPrecio(item.Price)
+    console.log(item.Price)
   };
 
    // Función para manejar la selección de talla
@@ -147,21 +151,33 @@ const ItemDetail = () => {
                       
                       <span key={item.variantId} className={`w-full h-auto text-3xl variationPrice-${item.variantId} 
                       ${
+                        
                         showFirtsPrice && showSecondPrice ? '': showFirtsPrice && item.variantId === 'SG1' ? '': showSecondPrice && item.variantId ==='SG2'? '': 'hidden'
                        
                       }
+                    
                       `}>{formatPrice(item.Price)}</span>  
                     ))}
                   </div>
                   
                   <div>
-                    <ItemCount stockItems={
-                      product.variant.find(
-                        (item) =>
-                          (showFirstImage && item.variantId === 'SG1') ||
-                          (showSecondImage && item.variantId === 'SG2')
-                      ).sizeStock.find((itemSize) => itemSize.size === selectedSize)?.quantity || 0
-                      
+                    <ItemCount 
+                      producName ={product.name}
+                      productSize={selectedSize}
+                      productprice={
+                        selectedPrecio
+                        
+                      }
+                      productcolor={
+                        selectedColor
+                      }
+                      stockItems={
+                        product.variant.find(
+                          (item) =>
+                            (showFirstImage && item.variantId === 'SG1') ||
+                            (showSecondImage && item.variantId === 'SG2')
+                        ).sizeStock.find((itemSize) => itemSize.size === selectedSize)?.quantity || 0
+                        
                     }/>
                     <span className='flex absolute gap-[5px] top-[258px] left-[1050px]'>
                       <p>Maximo</p>

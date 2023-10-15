@@ -224,9 +224,9 @@
                 "image":"../imagenes/productos/celularXiaomi.webp",
                 "color": "Onyx gray",
                 "sizeStock": [
-                    { "Memoria Ram": "4 GB", "Memoria Interna": "128 GB" ,"quantity": 12},
-                    { "Memoria Ram": "6 GB", "Memoria Interna": "64 GB" ,"quantity": 8},
-                    { "Memoria Ram": "8 GB", "Memoria Interna": "256 GB" ,"quantity": 1}
+                    { "Memoria_Ram": "4 GB", "Memoria Interna": "128 GB" ,"quantity": 12},
+                    { "Memoria_Ram": "6 GB", "Memoria Interna": "64 GB" ,"quantity": 8},
+                    { "Memoria_Ram": "8 GB", "Memoria Interna": "256 GB" ,"quantity": 1}
 
                 ],
                 "Price": 1350000,

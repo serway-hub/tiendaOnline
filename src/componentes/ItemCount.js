@@ -1,11 +1,15 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState,useEffect, useContext } from 'react'
+import { cartContext } from './contex/CartContex'
 
 
-const ItemCount = ({stockItems}) => {
+const ItemCount = ({stockItems,producName,productprice,productSize,productcolor}) => {
+    
+    
     const [counter,setCounter] = useState(1)
     const [stock,setStock] =useState(stockItems)
-
+    const {addItem} = useContext(cartContext)
+    
     useEffect(() => {
         // Actualiza el estado de stock cuando cambia stockItems
         setStock(stockItems);
@@ -24,6 +28,16 @@ const ItemCount = ({stockItems}) => {
         }
     }
 
+    const handleAdd =() => {
+
+        addItem({name: producName, price: productprice,talla: productSize,Color: productcolor,quantity:counter})
+
+    }
+
+
+
+   
+
   return (
     <div>
         <div className='mb-[30px] mt-[30px]'>
@@ -35,7 +49,7 @@ const ItemCount = ({stockItems}) => {
             </div>            
         </div>
         <div>
-            <button className='bg-indigo-500 w-full h-[60px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-2 hover:font-medium text-2xl '>Agregar al Carrito</button>
+            <button className='bg-indigo-500 w-full h-[60px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-2 hover:font-medium text-2xl ' onClick={handleAdd}>Agregar al Carrito</button>
         </div>
     </div>
   )

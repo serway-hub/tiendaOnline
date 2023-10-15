@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbaringreso from './Navbaringreso'
 import Logo from './Logo';
 import Listascategorias from './Listascategorias';
 import {Link} from 'react-router-dom'

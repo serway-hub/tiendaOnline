@@ -10,6 +10,8 @@ import Ofertas from './componentes/Ofertas'
 import Moda from './componentes/Moda'
 import CartWidget from './componentes/CartWidget';
 
+import CartContext from './componentes/contex/CartContex';
+
 
 
 
@@ -19,18 +21,21 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar/>
-        <Routes>
-          <Route path={'/'} element={<ItemsListContainer greeting='bienvenido a greyka store'/>} />
-          <Route path={'/category/:id'} element={<ItemsListContainer />} />
-          <Route path={'/item/:id'} element={<ItemsDetailContainer />} />
-          <Route path={'/item/:id'} element={<ItemDetail />} />
-          <Route path={'/Ofertas'} element={<Ofertas/>}/>
-          <Route path={'/Moda'} element={<Moda/>}/>
-          <Route path={'/contactenos'} element={<Contactenos/>}/>
-          <Route path={'/cart'} element={<CartWidget/>}/>
-          <Route path={'*'} element={<Error404 />} />
-        </Routes>
+        <CartContext>
+
+          <Navbar/>
+          <Routes>
+            <Route path={'/'} element={<ItemsListContainer greeting='bienvenido a greyka store'/>} />
+            <Route path={'/category/:id'} element={<ItemsListContainer />} />
+            <Route path={'/item/:id'} element={<ItemsDetailContainer />} />
+            <Route path={'/item/:id'} element={<ItemDetail />} />
+            <Route path={'/Ofertas'} element={<Ofertas/>}/>
+            <Route path={'/Moda'} element={<Moda/>}/>
+            <Route path={'/contactenos'} element={<Contactenos/>}/>
+            <Route path={'/cart'} element={<CartWidget/>}/>
+            <Route path={'*'} element={<Error404 />} />
+          </Routes>
+        </CartContext>
       
       </BrowserRouter>
     </div>

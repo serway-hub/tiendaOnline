@@ -1,10 +1,10 @@
-import React,{ useState } from 'react'
+import React from 'react'
 import { formatPrice} from '../api/apiDivisas'
 import { Link } from 'react-router-dom'
 
 
 const Item = ({item}) => {
-    console.log(item)
+
     const {id,name,variant,description,category} =item
 
     const precioVariantes= variant.map(variant => variant.Price)
@@ -28,7 +28,7 @@ const Item = ({item}) => {
     const variantImage =  variantData.map((variantItem)=>(
         <img key={variantItem.variantId} src={variantItem.image} alt={name} id={variantItem.variantId} className={`w-[329.75px] h-[329.75px] variante-${variantItem.variantId}`}/>
     ));
-    console.log(variantImage)
+    
 
     const prices = variantData.map((variantItem)=>(
         <span key={variantItem.variantId} id={variantItem.variantId} className={`price-${variantItem.variantId}`}>{formatPrice(variantItem.Price)}</span>

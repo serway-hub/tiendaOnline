@@ -3,7 +3,7 @@ import { useState,useEffect, useContext } from 'react'
 import { cartContext } from './contex/CartContex'
 
 
-const ItemCount = ({stockItems,producName,productprice,productSize,productcolor}) => {
+const ItemCount = ({stockItems,producName,productprice,productSize,productcolor,productImage,productId,productStock}) => {
     
     
     const [counter,setCounter] = useState(1)
@@ -30,7 +30,7 @@ const ItemCount = ({stockItems,producName,productprice,productSize,productcolor}
 
     const handleAdd =() => {
 
-        addItem({name: producName, price: productprice,talla: productSize,Color: productcolor,quantity:counter})
+        addItem({id:productId,image:productImage ,name: producName, price: productprice,talla: productSize,Color: productcolor,quantity:counter, stock:productStock})
 
     }
 

@@ -7,6 +7,8 @@ import CartWidget from './CartWidget';
 import chevronDown from './iconos/chevron-down-solid.svg'
 
 const Navbar = () => {
+
+  
   const [showListacategorias, setShowListacategorias] = useState(false)
 
   const handleMouseEnter = () => {

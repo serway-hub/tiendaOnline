@@ -12,6 +12,7 @@ const ItemDetail = () => {
   const [product, setproduct] = useState(null)
   const [showFirstImage, setShowFirstImage] = useState(true)
   const [showSecondImage, setShowSecondImage] = useState(false)
+  const [selectImage, setSelectImage] = useState(null)
   const [selectedSize, setSelectedSize] = useState(null)
   const [selectedColor, setSelectedColor] = useState(null)
   const [selectedPrecio, setSelectedPrecio] = useState(null)
@@ -55,7 +56,8 @@ const ItemDetail = () => {
     }
     setSelectedColor(item.color)
     setSelectedPrecio(item.Price)
-    console.log(item.Price)
+    setSelectImage(item.image)
+    
   };
 
    // Función para manejar la selección de talla
@@ -82,7 +84,6 @@ const ItemDetail = () => {
           <div className='ml-5 mr-5 flex flex-col w-[60%]'>
               <div className='text-3xl'>
                 <h2>{product.name}</h2>
-
               </div>
               <div className='flex justify-around mt-[20px]'>
                 <div className='w-full'>
@@ -162,23 +163,25 @@ const ItemDetail = () => {
                   
                   <div>
                     <ItemCount 
+                      productId = {product.id}
+                      productImage={selectImage}
                       producName ={product.name}
                       productSize={selectedSize}
-                      productprice={
-                        selectedPrecio
-                        
-                      }
-                      productcolor={
-                        selectedColor
-                      }
+                      productprice={selectedPrecio}
+                      productcolor={selectedColor}
                       stockItems={
                         product.variant.find(
                           (item) =>
                             (showFirstImage && item.variantId === 'SG1') ||
                             (showSecondImage && item.variantId === 'SG2')
                         ).sizeStock.find((itemSize) => itemSize.size === selectedSize)?.quantity || 0
-                        
-                    }/>
+                      }
+                      productStock ={product.variant.find((item) =>
+                        (showFirstImage && item.variantId === 'SG1') ||
+                          (showSecondImage && item.variantId === 'SG2')
+                        ).sizeStock.find((itemSize) => itemSize.size ===selectedSize)?.quantity || 0}
+                      
+                      />
                     <span className='flex absolute gap-[5px] top-[258px] left-[1050px]'>
                       <p>Maximo</p>
                       {product.variant.find(

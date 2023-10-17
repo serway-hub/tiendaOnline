@@ -8,9 +8,8 @@ import ItemDetail from './componentes/ItemDetail';
 import Contactenos from './componentes/Contactenos';
 import Ofertas from './componentes/Ofertas'
 import Moda from './componentes/Moda'
-import CartWidget from './componentes/CartWidget';
-
 import CartContext from './componentes/contex/CartContex';
+import CartPage from './componentes/CartPage';
 
 
 
@@ -32,7 +31,7 @@ function App() {
             <Route path={'/Ofertas'} element={<Ofertas/>}/>
             <Route path={'/Moda'} element={<Moda/>}/>
             <Route path={'/contactenos'} element={<Contactenos/>}/>
-            <Route path={'/cart'} element={<CartWidget/>}/>
+            <Route path={'/cart'} element={<CartPage/>}/>
             <Route path={'*'} element={<Error404 />} />
           </Routes>
         </CartContext>

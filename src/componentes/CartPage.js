@@ -41,9 +41,11 @@ const CartPage = () => {
         // Actualiza el estado de items cuando cambia cart
         setItems(cart);
     }, [cart]);
+
+    
   return (
     <div className='bg-[#ebebeb] grid grid-cols-[2fr,1fr]'>
-        <div>
+        <div className='pb-[30px]'>
             <div className='flex pt-[30px] pl-[30px] gap-[5px]'>
                 <p className='text-2xl font-semibold'>Carro</p>
                 <p className='text-2xl'>({items.reduce((acc,item) => acc + item.quantity,0)} productos)</p>

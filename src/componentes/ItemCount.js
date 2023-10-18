@@ -10,16 +10,13 @@ const ItemCount = ({stockItems,producName,productprice,productSize,productcolor,
     const [stock,setStock] =useState(stockItems)
     const {addItem} = useContext(cartContext)
     
-    useEffect(() => {
-        // Actualiza el estado de stock cuando cambia stockItems
-        setStock(stockItems);
-      }, [stockItems]);
+ 
 
     const plusStock = () => {
         if (counter < stock) {
             setCounter(counter+1)
             
-        }
+        } 
     }
 
     const minusStock = () => {
@@ -33,6 +30,15 @@ const ItemCount = ({stockItems,producName,productprice,productSize,productcolor,
         addItem({id:productId,image:productImage ,name: producName, price: productprice,talla: productSize,Color: productcolor,quantity:counter, stock:productStock})
 
     }
+    useEffect(() => {
+        // Actualiza el estado de stock cuando cambia stockItems
+        setStock(stockItems);
+        if (stockItems < counter) {
+            setCounter(stockItems);
+        }
+      }, [stockItems]);
+
+    
 
 
 

@@ -174,12 +174,12 @@ const ItemDetail = () => {
                           (item) =>
                             (showFirstImage && item.variantId === 'SG1') ||
                             (showSecondImage && item.variantId === 'SG2')
-                        ).sizeStock.find((itemSize) => itemSize.size === selectedSize)?.quantity || 0
+                        ).sizeStock.find((itemSize) => itemSize.size === selectedSize)?.quantity || 12
                       }
                       productStock ={product.variant.find((item) =>
                         (showFirstImage && item.variantId === 'SG1') ||
                           (showSecondImage && item.variantId === 'SG2')
-                        ).sizeStock.find((itemSize) => itemSize.size ===selectedSize)?.quantity || 0}
+                        ).sizeStock.find((itemSize) => itemSize.size ===selectedSize)?.quantity || 12}
                       
                       />
                     <span className='flex absolute gap-[5px] top-[258px] left-[1050px]'>
@@ -188,7 +188,7 @@ const ItemDetail = () => {
                           (item) =>
                             (showFirstImage && item.variantId === 'SG1') ||
                             (showSecondImage && item.variantId === 'SG2')
-                        ).sizeStock.find((itemSize) => itemSize.size === selectedSize)?.quantity || 0
+                        ).sizeStock.find((itemSize) => itemSize.size === selectedSize)?.quantity || 12
                       }
                       <p> disponibles</p>
 

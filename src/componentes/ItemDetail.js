@@ -3,8 +3,8 @@ import ItemCount from './ItemCount'
 import { useParams } from 'react-router-dom'
 import arrayProducts from '../Json/arrayProducts.json'
 import { formatPrice} from '../api/apiDivisas'
-import Item from './Item'
 import logo from '../componentes/iconos/greyka_store_logo.webp'
+
 
 
 const ItemDetail = () => {

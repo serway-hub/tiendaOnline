@@ -1,6 +1,7 @@
 import React,{useContext,useEffect,useState} from 'react'
 import { cartContext } from './contex/CartContex'
 import { formatPrice } from '../api/apiDivisas'
+import Swal from 'sweetalert2'
 
 
 const CartPage = () => {
@@ -15,8 +16,14 @@ const CartPage = () => {
             console.log(item.quantity)
             if (index === itemId && item.quantity < item.stock) {
                 return { ...item, quantity: item.quantity + 1 };
+            } else{
+                Swal.fire({
+                    icon: 'info',
+                    text: `La cantidad no puede ser mayor a  ${item.quantity} unidades`
+                })
             }
             return item;
+
         });
         console.log(updatedItems)
         setItems(updatedItems);
@@ -37,6 +44,12 @@ const CartPage = () => {
 
     };
 
+    const removeItem= (itemId) =>{
+        const updatedItems = items.filter((item,index) => index !== itemId)
+
+        setItems(updatedItems)
+    }
+
     useEffect(() => {
         // Actualiza el estado de items cuando cambia cart
         setItems(cart);
@@ -54,31 +67,38 @@ const CartPage = () => {
             <div className='w-full'>
                 {items.map((item,index) => (
                     <div key={index} className='pt-[30px] pb-[30px] px-7 rounded-t-xl ' > 
-                        <section className='bg-[#ffffff] flex justify-around rounded-lg items-center'>
+                        <section className='bg-[#ffffff] flex justify-stretch rounded-lg items-center gap-[25px]'>
 
                             <img src={item.image} className='w-24'></img>
-                            <div className='flex flex-col gap-[10px]'>
-                                <span>{item.name}</span>
-                                <span>Color: {item.Color}</span>
-                                <span>Talla: {item.talla}</span>
-                                
-                            </div>
                             <div>
-                                <span className='text-2xl'>{formatPrice(item.price)}</span>
+                                <span className='text-xl'>{item.name}</span>
+                                <div className='flex w-full gap-[70px] items-center'>
 
-                            </div>
-                            <div className='flex gap-[10px]'>
+                                    <div className='flex flex-col gap-[10px]'>
+                                        
+                                        <span>Color: {item.Color}</span>
+                                        <span>Talla: {item.talla}</span>
+                                        
+                                    </div>
+                                    <div>
+                                        <span className='text-2xl'>{formatPrice(item.price)}</span>
 
-                                <div>
-                                    <button className="bg-[#eeeeee] w-[30px] h-[30px] text-2xl" type='button' onClick={()=>minusItem(index)}>-</button>
-                                    <button  className='button w-[40px] text-2xl'>{item.quantity}</button>
-                                    <button className="bg-[#eeeeee] w-[30px] h-[30px] text-2xl" type='button' onClick={()=>plusItem(index)}>+</button>
-                                </div>
-                                <div className='flex items-center gap-[5px] '>
-                                    
-                                    <span>Maximo</span>
-                                    {item.stock}
-                                    <span> unidades </span>
+                                    </div>
+                                    <div className='flex gap-[10px]'>
+
+                                        <div>
+                                            <button className="bg-[#eeeeee] w-[30px] h-[30px] text-2xl" type='button' onClick={()=>minusItem(index)}>-</button>
+                                            <button  className='button w-[40px] text-2xl'>{item.quantity}</button>
+                                            <button className="bg-[#eeeeee] w-[30px] h-[30px] text-2xl" type='button' onClick={()=>plusItem(index)}>+</button>
+                                        </div>
+                                        <div className='flex items-center gap-[5px] '>
+                                            
+                                            <span>Maximo</span>
+                                            {item.stock}
+                                            <span> unidades </span>
+                                        </div>
+                                    </div>
+                                    <button className='bg-[#ff8117] w-8 text-[#ffffff] rounded-lg' onClick={()=> removeItem(index)}>X</button>
                                 </div>
                             </div>
                         </section>

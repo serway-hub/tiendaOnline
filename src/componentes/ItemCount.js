@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState,useEffect, useContext } from 'react'
 import { cartContext } from './contex/CartContex'
+import Swal from 'sweetalert2'
 
 
 const ItemCount = ({stockItems,producName,productprice,productSize,productcolor,productImage,productId,productStock}) => {
@@ -16,7 +17,12 @@ const ItemCount = ({stockItems,producName,productprice,productSize,productcolor,
         if (counter < stock) {
             setCounter(counter+1)
             
-        } 
+        } else{
+            Swal.fire({
+                icon: 'info',
+                text: `La cantidad no puede ser mayor a  ${stock} unidades`
+            })
+        }
     }
 
     const minusStock = () => {

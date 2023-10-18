@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 
 
 const ItemCount = ({stockItems,producName,productprice,productSize,productcolor,productImage,productId,productStock}) => {
-    
+    console.log()
     
     const [counter,setCounter] = useState(1)
     const [stock,setStock] =useState(stockItems)
@@ -14,6 +14,7 @@ const ItemCount = ({stockItems,producName,productprice,productSize,productcolor,
  
 
     const plusStock = () => {
+        console.log(stock)
         if (counter < stock) {
             setCounter(counter+1)
             
@@ -26,12 +27,14 @@ const ItemCount = ({stockItems,producName,productprice,productSize,productcolor,
     }
 
     const minusStock = () => {
+        console.log(counter)
         if (counter > 1) {
             setCounter(counter-1)
         }
     }
 
     const handleAdd =() => {
+        console.log(counter)
 
         addItem({id:productId,image:productImage ,name: producName, price: productprice,talla: productSize,Color: productcolor,quantity:counter, stock:productStock})
 
@@ -42,7 +45,7 @@ const ItemCount = ({stockItems,producName,productprice,productSize,productcolor,
         if (stockItems < counter) {
             setCounter(stockItems);
         }
-      }, [stockItems]);
+      }, [stockItems,counter]);
 
     
 

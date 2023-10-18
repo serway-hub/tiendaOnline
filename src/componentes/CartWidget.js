@@ -21,7 +21,7 @@ const CartWidget = () => {
         <Link to ='/cart'>
           <div className='flex'>
             <img src={cartIcon} className='w-[2rem]' alt='carrito'></img>
-            <span>{cart.reduce((acc,itemq) => acc + itemq.quantity,0)}</span>
+            <span>{cart.reduce((acc,itemh) => acc + itemh.quantity,0)}</span>
 
           </div>
         </Link>

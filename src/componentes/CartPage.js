@@ -6,22 +6,21 @@ import Swal from 'sweetalert2'
 
 const CartPage = () => {
     
-    const {cart} = useContext(cartContext)
+    const {cart,removeItem,addItem,updateQuantity} = useContext(cartContext)
     const [items, setItems] = useState(cart);
+    console.log(items)
 
     const plusItem = (itemId) => {
 
-        const updatedItems = items.map((item,index) => {
-            console.log(item.id)
-            console.log(item.quantity)
-            if (index === itemId && item.quantity < item.stock) {
+        const updatedItems = items.map((item) => {
+       
+            if (item.id === itemId && item.quantity < item.stock) {
+                const updatedItem = { ...item, quantity: item.quantity + 1 };
+                updateQuantity(updatedItem)
+               
                 return { ...item, quantity: item.quantity + 1 };
-            } else{
-                Swal.fire({
-                    icon: 'info',
-                    text: `La cantidad no puede ser mayor a  ${item.quantity} unidades`
-                })
-            }
+            } 
+            
             return item;
 
         });
@@ -31,10 +30,10 @@ const CartPage = () => {
 
     const minusItem = (itemId) => {
         
-        const updatedItems = items.map((item,index) => {
-            console.log(item.id)
-            console.log(item.quantity)
-            if (index === itemId && item.quantity > 0) {
+        const updatedItems = items.map((item) => {     
+            if (item.id === itemId && item.quantity > 1) {
+                const updatedItem = { ...item, quantity: item.quantity - 1 };
+                updateQuantity(updatedItem)
                 return { ...item, quantity: item.quantity - 1 };
             }
             return item;
@@ -44,10 +43,8 @@ const CartPage = () => {
 
     };
 
-    const removeItem= (itemId) =>{
-        const updatedItems = items.filter((item,index) => index !== itemId)
-
-        setItems(updatedItems)
+    const handleRemove = (index) =>{
+        removeItem(index)
     }
 
     useEffect(() => {
@@ -59,20 +56,23 @@ const CartPage = () => {
   return (
     <div className='bg-[#ebebeb] grid grid-cols-[2fr,1fr]'>
         <div className='pb-[30px]'>
-            <div className='flex pt-[30px] pl-[30px] gap-[5px]'>
-                <p className='text-2xl font-semibold'>Carro</p>
-                <p className='text-2xl'>({items.reduce((acc,item) => acc + item.quantity,0)} productos)</p>
+            <div className='flex pt-[30px] pl-[30px] justify-between pr-[30px] '>
+                <div className='flex '>
+                    <p className='text-2xl font-semibold'>Carro</p>
+                    <p className='text-2xl'>({items.reduce((acc,item) => acc + item.quantity,0)} productos)</p>
+                </div>
+                <button className='text-2xl font-semibold text-[#ffffff] bg-[#ff8117] rounded-full pl-[20px] pr-[20px]'>Vaciar Carrito</button>
                 
             </div>
             <div className='w-full'>
                 {items.map((item,index) => (
-                    <div key={index} className='pt-[30px] pb-[30px] px-7 rounded-t-xl ' > 
+                    <div key={index} className='pt-[30px] pb-[30px]  px-7 rounded-t-xl ' > 
                         <section className='bg-[#ffffff] flex justify-stretch rounded-lg items-center gap-[25px]'>
 
                             <img src={item.image} className='w-24'></img>
                             <div>
                                 <span className='text-xl'>{item.name}</span>
-                                <div className='flex w-full gap-[70px] items-center'>
+                                <div className='flex w-full gap-[50px] items-center'>
 
                                     <div className='flex flex-col gap-[10px]'>
                                         
@@ -87,9 +87,9 @@ const CartPage = () => {
                                     <div className='flex gap-[10px]'>
 
                                         <div>
-                                            <button className="bg-[#eeeeee] w-[30px] h-[30px] text-2xl" type='button' onClick={()=>minusItem(index)}>-</button>
+                                            <button className="bg-[#eeeeee] w-[30px] h-[30px] text-2xl" type='button' onClick={()=>minusItem(item.id)}>-</button>
                                             <button  className='button w-[40px] text-2xl'>{item.quantity}</button>
-                                            <button className="bg-[#eeeeee] w-[30px] h-[30px] text-2xl" type='button' onClick={()=>plusItem(index)}>+</button>
+                                            <button className="bg-[#eeeeee] w-[30px] h-[30px] text-2xl" type='button' onClick={()=>plusItem(item.id)}>+</button>
                                         </div>
                                         <div className='flex items-center gap-[5px] '>
                                             
@@ -98,7 +98,7 @@ const CartPage = () => {
                                             <span> unidades </span>
                                         </div>
                                     </div>
-                                    <button className='bg-[#ff8117] w-8 text-[#ffffff] rounded-lg' onClick={()=> removeItem(index)}>X</button>
+                                    <button className='bg-[#ff8117] w-8 text-[#ffffff] rounded-lg' onClick={()=> handleRemove(index)}>X</button>
                                 </div>
                             </div>
                         </section>

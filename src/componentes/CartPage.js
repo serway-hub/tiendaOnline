@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 
 const CartPage = () => {
     
-    const {cart,removeItem,addItem,updateQuantity} = useContext(cartContext)
+    const {cart,removeItem,updateQuantity,cleartCart} = useContext(cartContext)
     const [items, setItems] = useState(cart);
     console.log(items)
 
@@ -47,6 +47,11 @@ const CartPage = () => {
         removeItem(index)
     }
 
+    const  handleRomoveAllItems= () => {
+        cleartCart()
+
+    }
+
     useEffect(() => {
         // Actualiza el estado de items cuando cambia cart
         setItems(cart);
@@ -61,7 +66,7 @@ const CartPage = () => {
                     <p className='text-2xl font-semibold'>Carro</p>
                     <p className='text-2xl'>({items.reduce((acc,item) => acc + item.quantity,0)} productos)</p>
                 </div>
-                <button className='text-2xl font-semibold text-[#ffffff] bg-[#ff8117] rounded-full pl-[20px] pr-[20px]'>Vaciar Carrito</button>
+                <button className='text-2xl font-semibold text-[#ffffff] bg-[#ff8117] rounded-full pl-[20px] pr-[20px]' onClick={()=>handleRomoveAllItems()}>Vaciar Carrito</button>
                 
             </div>
             <div className='w-full'>

@@ -41,21 +41,19 @@ const Item = ({item}) => {
 
   return (
     
-    <Link to={{pathname: `/item/${item.id}`}} className='product'>
-        <div className='flex'>
-            <div>
-                {variantImage}
+    <Link to={{pathname: `/item/${item.id}`}} className='product '>
+        <div className='flex flex-col justify-center gap-[20px] mb-[20px]'>
+            
+            {variantImage}
     
-                <div className='grid'>
-                    <p>{name}</p>
-                    <span>{rangoPrecio}</span>
-                    {prices}
-                </div>
-                <div>
-                    {colorVariant}
-                </div>
-                <button>Agregar al carrito</button>
+            <div className='grid'>
+                <p className='text-xl line-clamp-1'>{name}</p>
+                <span className='text-2xl'>{rangoPrecio}</span>
+                {prices}
             </div>
+
+              
+            
         </div>
     </Link>
   )

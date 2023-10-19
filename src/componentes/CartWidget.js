@@ -9,10 +9,11 @@ const CartWidget = () => {
   const {cart} = useContext(cartContext)  
   console.log(cart)
 
+  
+
   useEffect(() => {
-
-  },[cart])
-
+    // Realiza otras operaciones si es necesario
+  }, [cart]);
 
 
 

@@ -42,7 +42,7 @@ const ItemsListContainer = ({greeting}) => {
 
 
   return (
-    <div className='container'>
+    <div className='container max-w-full'>
       <h1>{greeting}</h1>
       {loading ? (<p>Cargando productos...</p>):(
       

@@ -5,38 +5,32 @@ import { Link } from 'react-router-dom'
 
 const Item = ({item}) => {
 
-    const {id,name,variant,description,category} =item
+    
 
-    const precioVariantes= variant.map(variant => variant.Price)
+    const {id,idP,name,description,categoryId,variant} = item
+
+   console.log(variant)
+    
+
+   
+
+    const precioVariantes= variant.map(variant => variant.price)
 
     const precioMinimo= Math.min(...precioVariantes)
     const precioMaximo= Math.max(...precioVariantes)
     const rangoPrecio = `${formatPrice(precioMinimo)}-${formatPrice(precioMaximo)}`
 
-    const variantData = variant.map((item)=>{
-        const {variantId, image,color,sizeStock,Price} = item
-        return {
-            variantId,
-            image,
-            color,
-            sizeStock,
-            Price
 
-        }
-    })
+    
 
-    const variantImage =  variantData.map((variantItem)=>(
+    const variantImage =  variant.map((variantItem)=>(
         <img key={variantItem.variantId} src={variantItem.image} alt={name} id={variantItem.variantId} className={`w-[329.75px] h-[329.75px] variante-${variantItem.variantId}`}/>
     ));
     
 
-    const prices = variantData.map((variantItem)=>(
-        <span key={variantItem.variantId} id={variantItem.variantId} className={`price-${variantItem.variantId}`}>{formatPrice(variantItem.Price)}</span>
+    const prices = variant.map((variantItem)=>(
+        <span key={variantItem.variantId} id={variantItem.variantId} className={`price-${variantItem.variantId}`}>{formatPrice(variantItem.price)}</span>
     ))
-    const colorVariant = variantData.map((variantItem)=>(
-        <button key={variantItem.color} id={variantItem.variantId} className='bg-indigo-500 w-[100px] text-[#f9f9fa] rounded-full hover:bg-[#ffa040] hover:ring-2 hover:font-medium botton-SG1 px-4 py-2 bg-[#ffa040] text-white hover:bg-blue-600  focus:ring focus:ring-blue-300 active:bg-[#5495f8] active:bg-[#ffa040]'>{variantItem.color}</button>
-    ))
-
 
 
   return (

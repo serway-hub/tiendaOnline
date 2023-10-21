@@ -1,7 +1,7 @@
 import React from 'react'
-import { useState,useEffect,useContext} from 'react'
+import { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import arrayProducts from '../Json/arrayProducts.json'
+import { getFirestore, collection, getDocs,where,query } from 'firebase/firestore'
 import ItemList from './ItemList'
 
 
@@ -17,28 +17,40 @@ const ItemsListContainer = ({greeting}) => {
   const {id} = useParams()
   const [loading,setLoading] = useState(true)
 
+  useEffect(() => {
+    const querydb = getFirestore()
+    const queryColletion = collection(querydb,'products')
+    console.log(queryColletion)
+    if(id){
+      const queryFilter = query(queryColletion, where('categoryId','==',id), )
+      getDocs(queryFilter).then((res)=>{
+        const itemsData = res.docs.map((p)=> ({id: p.id, ...p.data()})) 
+        setItem(itemsData)
+        setLoading(false)
+        console.log(itemsData)
+
+      })
+      .catch((error) => {
+        console.error('error al cargar los datos')
+        setLoading(false)
+      })
+
+    } else{
+
+      getDocs(queryColletion).then((res)=>{
+        const itemsData = res.docs.map((p)=>({id: p.id, ...p.data()}))
+        setItem(itemsData)
+        setLoading(false)
+        console.log(itemsData) 
+      })
+    }
+  
+  },[id])
+
   
 
 
 
-  useEffect(()=>{
-
-    const fetchData = async () =>{
-      try{
-        const data = await new Promise((resolve)=>{
-          setTimeout(()=>{
-            resolve(id ? arrayProducts.filter(item => item.category === id) : arrayProducts)
-          },1000)
-        })
-        setItem(data)
-        setLoading(false)
-      } catch(error){
-        console.log('error:',error)
-      }
-    }
-    fetchData()
-
-  },[id])
 
 
   return (

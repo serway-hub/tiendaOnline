@@ -2,6 +2,8 @@ import React,{useContext,useEffect,useState} from 'react'
 import { cartContext } from './contex/CartContex'
 import { formatPrice } from '../api/apiDivisas'
 import Swal from 'sweetalert2'
+import { getFirestore, addDoc, collection } from 'firebase/firestore'
+import { Link } from 'react-router-dom'
 
 
 const CartPage = () => {
@@ -9,6 +11,33 @@ const CartPage = () => {
     const {cart,removeItem,updateQuantity,cleartCart} = useContext(cartContext)
     const [items, setItems] = useState(cart);
     console.log(items)
+
+    const totalPrice= formatPrice(items.reduce((acc,item) => acc + (item.price * item.quantity),0))
+
+    const order={
+        buyer:{
+            name: 'jorge luis contreras',
+            email: 'george@gmail.com',
+            phone: '3153276899',
+            address: 'cra 15 #16-25'
+        },
+        items: items.map((item) =>({
+            id: item.id,
+            title: item.name,
+            price: item.price,
+            quantity: item.quantity
+
+        })),
+        total:totalPrice
+    }
+    const handleClick =()=>{
+        const db = getFirestore()
+        const ordersColletion = collection(db, 'orders')
+        addDoc(ordersColletion,order).then(({id})=> console.log(id))
+
+    }
+
+   
 
     const plusItem = (itemId) => {
 
@@ -56,6 +85,16 @@ const CartPage = () => {
         // Actualiza el estado de items cuando cambia cart
         setItems(cart);
     }, [cart]);
+
+    if (cart.legth === 0){
+        return(
+            <>
+            <p>Hola no hay productos en tu Carrito</p>
+            <Link to='/'> Hacer una compra</Link>
+            
+            </>
+        )
+    }
 
     
   return (
@@ -133,7 +172,7 @@ const CartPage = () => {
                         
                     </div>
                 </div>
-                <button type="button" className='bg-[#ff8117] rounded-full w-full text-2xl font-semibold text-[#ffffff] pt-[10px] pb-[10px]'>Finalizar Compra</button>
+                <button type="button" className='bg-[#ff8117] rounded-full w-full text-2xl font-semibold text-[#ffffff] pt-[10px] pb-[10px]' onClick={handleClick}>Finalizar Compra</button>
             </div>
         </section>
     </div>

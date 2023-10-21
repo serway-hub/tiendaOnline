@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import ItemCount from './ItemCount'
 import { useParams } from 'react-router-dom'
-import arrayProducts from '../Json/arrayProducts.json'
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
 import { formatPrice} from '../api/apiDivisas'
 import logo from '../componentes/iconos/greyka_store_logo.webp'
 
@@ -9,6 +9,7 @@ import logo from '../componentes/iconos/greyka_store_logo.webp'
 
 const ItemDetail = () => {
   const { id } = useParams()
+  
   const [product, setproduct] = useState(null)
   const [showFirstImage, setShowFirstImage] = useState(true)
   const [showSecondImage, setShowSecondImage] = useState(false)
@@ -21,18 +22,13 @@ const ItemDetail = () => {
   const [showSecondPrice, setShowSecondPrice] = useState(false)
   
   useEffect(()=>{
-    const getProductDetail = async () =>{
-      try {
-        const selectProduct = arrayProducts.find((item) => item.id === id)
-        setproduct(selectProduct)
-      } catch (error) {
-        console.error('error fetching product detail', error)
-      }
-    }
-    getProductDetail()
+    const querydbt = getFirestore()
+    const queryDoc = doc(querydbt, 'products', id)
+    getDoc(queryDoc).then((res) => setproduct({id: res.id, ...res.data()}))
+    
   },[id])
 
-  const precioVariantes = product ? product.variant.map(variant => variant.Price) : []
+  const precioVariantes = product ? product.variant.map(variant => variant.price) : []
 
   const precioMinimo  = Math.min(...precioVariantes)
   const precioMaximo = Math.max(...precioVariantes)
@@ -55,7 +51,7 @@ const ItemDetail = () => {
       setShowSecondPrice(true)
     }
     setSelectedColor(item.color)
-    setSelectedPrecio(item.Price)
+    setSelectedPrecio(item.price)
     setSelectImage(item.image)
     
   };
@@ -81,10 +77,13 @@ const ItemDetail = () => {
                 }`}/> 
             ))}
           </div>
-          <div className='ml-5 mr-5 flex flex-col w-[60%]'>
+          <div className='ml-5 mr-5 flex flex-col w-[60%] gap-[20px]'>
               <div className='text-3xl'>
                 <h2>{product.name}</h2>
               </div>
+              <p>
+                {product.description}
+              </p>
               <div className='flex justify-around mt-[20px]'>
                 <div className='w-full'>
                   <div className='flex items-center'>
@@ -119,6 +118,7 @@ const ItemDetail = () => {
                         ? ''
                         : 'hidden'
                     }`}>
+                      
                       <span>Talla:</span>
                       {item.sizeStock.map((itemSise) => (
                         
@@ -157,7 +157,7 @@ const ItemDetail = () => {
                        
                       }
                     
-                      `}>{formatPrice(item.Price)}</span>  
+                      `}>{formatPrice(item.price)}</span>  
                     ))}
                   </div>
                   
@@ -182,7 +182,7 @@ const ItemDetail = () => {
                         ).sizeStock.find((itemSize) => itemSize.size ===selectedSize)?.quantity || 12}
                       
                       />
-                    <span className='flex absolute gap-[5px] top-[258px] left-[1050px]'>
+                    <span className='flex absolute gap-[5px] top-[370px] left-[1050px]'>
                       <p>Maximo</p>
                       {product.variant.find(
                           (item) =>
